@@ -28,12 +28,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface KTTextView : UITextView 
-{
-   UILabel *_placeholder;
-}
+@interface KTTextView : UITextView
 
 @property (nonatomic, copy) NSString *placeholderText;
-@property (nonatomic, retain) UIColor *placeholderColor;
+@property (nonatomic, strong) UIColor *placeholderColor;
 
 @end

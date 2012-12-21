@@ -28,22 +28,15 @@
 #import "KTTextView.h"
 
 @interface KTTextView ()
-@property (nonatomic, retain) UILabel *placeholder;
+@property (nonatomic, strong) UILabel *placeholder;
 @end
 
 @implementation KTTextView
 
-//@synthesize placeholderText = _placeholderText;
-//@synthesize placeholderColor = _placeholderColor;
-@synthesize placeholder = _placeholder;
-
 - (void)dealloc
 {
    [[NSNotificationCenter defaultCenter] removeObserver:self];
-   
-   [_placeholder release], _placeholder = nil;
-   
-   [super dealloc];
+   self.placeholder = nil;
 }
 
 - (void)setup
@@ -66,7 +59,6 @@
    [self sendSubviewToBack:placeholder];
    
    [self setPlaceholder:placeholder];
-   [placeholder release];
 
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getFocus:) name:UITextViewTextDidBeginEditingNotification object:nil];
@@ -112,6 +104,7 @@
 
 - (void)getFocus:(NSNotification *)notification
 {
+    
     [_placeholder setAlpha:0.0];
 }
 

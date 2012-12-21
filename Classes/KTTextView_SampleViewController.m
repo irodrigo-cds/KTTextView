@@ -11,13 +11,7 @@
 
 @implementation KTTextView_SampleViewController
 
-@synthesize textView = _textView;
-
-- (void)dealloc 
-{
-   [_textView release], _textView = nil;
-   [super dealloc];
-}
+@synthesize textView = _textView; 
 
 - (void)viewDidLoad 
 {
